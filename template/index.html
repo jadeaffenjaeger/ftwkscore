@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>FTWK - Scoreboard</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lilita+One|Numans|Roboto" rel="stylesheet"> 
+    </head>
+    <body>
+    <div id="container">
+        <h1>FTWK - Scoreboard</h1>
+        <ul>
+            <li class="elem heading">
+                <div class="place">Platz</div>
+                <div class="name">Name</div>
+                <div class="score">Punkte</div>
+            </li>
+            {% for team in teams %}
+            <li class="elem">
+                <div class="place">{{  team[0]  }}</div>
+                <div class="name">{{  team[1]  }}</div>
+                <div class="score">{{  team[2]  }}</div> 
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    </body>
+</html>
+
