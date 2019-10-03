@@ -20,21 +20,21 @@ def print_scoreboard(scoreboard):
         print('{:3}. Platz, {:3} Punkte: {}'.format(score[0], score[1], score[2]))
 
 
-def sort_places(teams):
+def sort_ranks(teams):
     #Sort scores in descending order
     sorted_teams = sorted(teams, reverse=True, key=lambda x: x[1])
 
-    place = 1
+    cur_rank = 1
     scoreboard = []
     for i in range(len(sorted_teams)):
-        score = []
-        # Increase number of place only when has fewer points than the last one (same points share the same place)
+        rank = []
+        # Increase number of place only when team has fewer points than the last one (same points share the same place)
         if i >= 1 and sorted_teams[i][1] < sorted_teams[i-1][1]:
-            place = i + 1
-        score.append(place)
-        score.append(sorted_teams[i][0])
-        score.append(sorted_teams[i][1])
-        scoreboard.append(score)
+            cur_rank = i + 1
+        rank.append(cur_rank)
+        rank.append(sorted_teams[i][0])
+        rank.append(sorted_teams[i][1])
+        scoreboard.append(rank)
     return scoreboard
 
 def main():
@@ -56,7 +56,7 @@ def main():
         score = sum(map(lambda x: float(x), team[1:]))
         teams.append((team[0], score))
 
-    scoreboard = sort_places(teams)
+    scoreboard = sort_ranks(teams)
     print_scoreboard(scoreboard)
     render_html(scoreboard)
 
